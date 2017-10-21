@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<title>Teal Duck</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta id="sts_bar" name="theme-color" content="#009687">
+<link rel="manifest" href="/manifest.json">
+<script src="js/jquery.js"></script>
+<script src="js/com.js"></script>
+<link rel="icon" sizes="192x192" href="icons/ico.ico">
+<link rel="stylesheet" href="css/w3.css">
+<link rel='stylesheet' hraef='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel='stylesheet' href='css/index.css'>
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<script src="js/jquery.mobile.js"></script>
+<script src="js/jquery.mobile.min.js"></script>
+<script>
+$(document).ready(function(){
+//sessionStorage.setItem("log","in");
+//dashboard();
+first();
+var e = localStorage.getItem("user");
+if(localStorage.getItem("code") === null){
+document.getElementById('save1').style.display='block';
+}else{
+if(sessionStorage.getItem("log") == "in"){sessionStorage.setItem("user",e)};
+if(sessionStorage.getItem("log") == "in"){dashboard()};
+};
+document.getElementById('usernav').innerHTML = sessionStorage.getItem("user");
+//if(localStorage.getItem("dppath") === null){document.getElementById('dpimg').src = "img/hmn.png"}else{document.getElementById('dpimg').src = localStorage.getItem('dppath')};;
+if(sessionStorage.getItem("log") === null){first()};
+document.getElementById("settings_dash").style.display = "none";
+document.getElementById("settings_delete").style.display = "none";
+});
+
+</script>
+<link rel="stylesheet" href="css/jquery.mobile.css">
+<link rel="stylesheet" href="css/jquery.mobile.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+</style>
+<script>
+ $(document).ready(function(){
+if(sessionStorage.getItem("log") == "out"){index()};
+});
+</script>
+
+<body class="w3-light-grey">
+
+<div id="navbar" class="w3-bar w3-top w3-animate-fade w3-mobile w3-card-4 w3-teal w3-margin-bottom">
+	<img src="img/white_outline.png" style="height:50px;background-color:#004D4A;" class="w3-button w3-hover-black w3-bar-item w3-display-center">
+  <!---a onClick="index()" href="#index" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a--->
+  <a onClick="dashboard()" href="#dashboard" class="w3-bar-item w3-button"><i class="fa fa-home fa-2x"></i></a>
+  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-info-circle fa-2x"></i></a>
+   <a href="#settings" onClick="settings()" data-transition="pop" class="w3-bar-item w3-button w3-right"><i class="fa fa-gear fa-2x"></i></a>
+  <a onClick="logout()" id="profile_button" class="w3-bar-item w3-button w3-right"><i class="fa fa-user-circle-o fa-2x"></i>  <b class="w3-hide-small w3-xlarge" id="usernav"></i></b></a>
+ 
+</div>
+
+
+
+
+
+<!---------------------------------------------- index ------>
+<div data-role="page" id="index">
+<div class="w3-card-4 w3-display-middle" style="width:70%;">
+    <header class="w3-container w3-teal">
+	<span onclick="reset()" class="w3-button w3-display-topright">&times;</span>
+      <h4><img src="img/white_outline.png" style="height:30px;" > Welcome<pro id="prof"></pro></h4>
+    </header>
+
+    <div class="w3-container w3-white">
+     <p><label>Password</label> <input class="w3-input w3-animate-input" id="pass" type="password"></p>
+	  <p><button onClick="sree()" class="w3-ripple w3-button w3-round w3-2017-shaded-spruce w3-hover-teal w3-center">Login</button>
+    </div>
+  </div>
+  
+  <div id="dberr" class="w3-modal w3-animate-fade">
+  <div class="w3-modal-content w3-animate-zoom popup">
+    <header class="w3-container w3-red"> 
+      <span onclick="document.getElementById('dberr').style.display='none'" 
+      class="w3-button w3-display-topright">&times;</span>
+      <h2>Database Error</h2>
+    </header>
+
+    <div class="w3-container">
+      <p>Your device does'nt seems to support Database for login.</p>
+    </div>
+	</div>
+  </div>
+  <div id="loginerr" class="w3-modal w3-animate-fade">
+  <div class="w3-modal-content w3-animate-zoom popup">
+    <header class="w3-container w3-red"> 
+      <span onclick="document.getElementById('loginerr').style.display='none'" 
+      class="w3-button w3-display-topright">&times;</span>
+      <h2><i class="fa fa-user-circle-o w3-red w3-margin-right" aria-hidden="true"></i>Login Error</h2>
+    </header>
+
+    <div class="w3-container">
+      <p><h6>The password you have entered is not the right one.Check whether the spelling is correct or not.</h6></p>
+    </div>
+	</div>
+  </div>
+  
+  </div>
+  <div id="save1" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+	<header class="w3-container w3-teal w3-center"> 	
+	<div  class="w3-teal w3-display-center w3-xxlarge"><img src="img/white_outline.png" class="w3-margin-right w3-margin-top" style="height:40px;">Teal Duck</div>
+      </header>
+	  <div style="width:100%;" class="w3-display">
+	  <div class="w3-center"><br>
+        <img src="img/hmn.png" alt="Avatar" style="width:20%" class="w3-circle w3-margin-top">
+      </div>
+	  </div>
+
+      <div class="w3-container">
+        <div class="w3-section">
+          <label><b>Name</b></label>
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Name" id="savname1" required>
+          <label><b>Password</b></label>
+          <input class="w3-input w3-border" type="password" placeholder="Enter Password" id="savpass1" required>
+          <button class="w3-button w3-block w3-green w3-section w3-padding" onClick="save1()">Save</button>
+        </div>
+      </div>
+
+</div>
+    </div>
+	
+<div data-role="page" class="navres " id="dash">
+<!-- Page Container -->
+<div class="w3-content navres" style="max-width:1400px;">
+
+  <!-- The Grid -->
+  
+    <!-- Left Column -->
+
+    <!-- Right Column -->
+    <div class="w3-animate-top">
+    
+      <div class=" w3-medium w3-container w3-light-grey w3-margin-bottom">
+	  
+        <h2 class="w3-text-grey w3-white w3-round w3-center w3-padding w3-card"><i class="fa fa-download fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Apps</h2>
+        <div class="w3-card-4 w3-white w3-round w3-margin-bottom w3-center"  style="width:200px;">
+			<div class="w3-display"><img src="img/apps/picsart.png" class="w3-padding w3-center w3-margin-bottom" style="width:100%"></div>
+			<div class="w3-margin-left w3-margin-right w3-center w3-margin-bottom">
+			<label class="w3-opacity w3-left">Name:</label><label class="w3-right ">PicsArt</label><br>
+			<label class="w3-opacity w3-left">Size:</label><label class="w3-right ">38.4 MB</label><br>
+			<label class="w3-opacity w3-left">Genre:</label><label class="w3-right "><h>Photo Editor</h></label><br>
+			</div>
+			<a class="w3-button w3-round w3-margin-bottom w3-2017-shaded-spruce"><i class="fa fa-download fa-fw w3-margin-right"></i>Download</a>
+			<br>
+        </div>
+		<div class="w3-card-4 w3-white w3-round w3-margin-bottom w3-center"  style="width:200px;">
+			<div class="w3-display"><img src="img/apps/timbre.png" class="w3-padding w3-center w3-margin-bottom" style="width:100%"></div>
+			<div class="w3-margin-left w3-margin-right w3-center w3-margin-bottom">
+			<label class="w3-opacity w3-left">Name:</label><label class="w3-right ">Timbre</label><br>
+			<label class="w3-opacity w3-left">Size:</label><label class="w3-right ">22.0 MB</label><br>
+			<label class="w3-opacity w3-left">Genre:</label><label class="w3-right "><h class="w3-small">Audio/Video Editor</h></label><br>
+			</div>
+			<a class="w3-button w3-round w3-margin-bottom w3-2017-shaded-spruce"><i class="fa fa-download fa-fw w3-margin-right"></i>Download</a>
+			<br>
+        </div>
+
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  
+  <!-- End Page Container -->
+</div>
+
+
+
+
+
+</div>
+
+</div>
+<!--- dash board end -->
+<div data-role="page" id="settings">
+<!----------------------------------------------------------------------------------------- Settings -->
+<br>
+<div class="w3-content navres" style="max-width:1400px;">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+  
+    <!-- Left Column -->
+	
+    <div class="w3-third w3-hide-small w3-animate-left">
+    
+      <div class="w3-white w3-text-grey w3-card-4">
+	 
+        <div class="w3-container">
+          <div class="w3-display-container w3-margin-top w3-display-center"><b class="fa fa-cogs fa-5x w3-display-center"></b><p class="w3-xxlarge">Settings</p></div>
+        <hr>
+		</div>
+        <div class="w3-bar">
+         <label  onClick="set_profile()"  style="width:100%;" class="w3-white w3-hover-teal w3-bar-item"><i class="fa fa-user-circle-o fa-fw w3-large"></i> Profile</label>
+        <label  onClick="set_dash()"  style="width:100%;" class="w3-white w3-hover-teal w3-bar-item"><i class="fa fa-dashboard fa-fw w3-large"></i> Dash Board</label>
+        <label  onClick="set_delete()"  style="width:100%;" class="w3-white w3-hover-teal w3-bar-item"><i class="fa fa-trash fa-fw w3-large"></i> Data Base</label>
+          </div>
+
+		  
+
+          
+          <br>
+	</div>
+    <!-- End Left Column -->
+    </div>
+
+    <!-- Right Column -->
+    <div class="w3-twothird w3-animate-right">
+          
+	<div class="w3-bar w3-hide-large w3-hide-medium w3-animate-left w3-mobile w3-card-4 w3-white w3-margin-bottom">
+		<div class="w3-opacity w3-display-container w3-margin-top w3-margin-left w3-display-center"><b class="fa fa-cogs fa-2x w3-display-center"></b><k class="w3-xxlarge"> Settings</k></div>
+        <hr>
+		<label  onClick="set_profile()" class="w3-white w3-hover-teal w3-bar-item"><i class="fa fa-user-circle-o fa-fw w3-large"></i> Profile</label>
+        <label  onClick="set_dash()"  class="w3-white w3-hover-teal w3-bar-item"><i class="fa fa-dashboard fa-fw w3-large"></i> Dash Board</label>
+        <label  onClick="set_delete()"  class="w3-white w3-hover-teal w3-bar-item"><i class="fa fa-trash fa-fw w3-large"></i> Data Base</label>
+		
+	</div>
+    
+     <div id="settings_profile" class="w3-container w3-card-2 w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-user-circle-o fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Profile</h2>
+		<div class="w3-container">
+          <h5 class="w3-opacity"><b>Basic</b></h5>
+          <div class="w3-container">
+        <div class="w3-section">
+          <label><b>Name</b></label>
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Name" id="savname" required>
+          <label><b>Password</b></label>
+          <input class="w3-input w3-border" type="password" placeholder="Enter Password" id="savpass" required>
+          <button class="w3-button w3-right w3-green w3-section w3-padding" onClick="save()">Save</button>
+         
+        </div>
+        </div>
+       
+      </div>
+	  <hr>
+	  <div class="w3-container"><br>
+	  <label class="w3-opacity"><b>Change Profile Picture</b></label><br>
+	  <div class="w3-section w3-margin-left">
+	   <p><label><b>Change the profile photo by tapping the change button.</b></label></p>
+	  <p><button onClick="document.getElementById('dp_c').style.display='block';" class="w3-ripple w3-button w3-teal w3-center">Change</button>
+	  <div id="dp_c" class="w3-modal">
+	  <div class="w3-display-middle">
+      <header class="w3-container w3-display-container w3-teal"> 
+        <span onclick="document.getElementById('dp_c').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>Profile Photo</h2>
+      </header>
+      <div class="w3-container w3-white">
+     <p><label>Select a new photo</label> <input style="width:35%;" accept="image/*" class="w3-input w3-button w3-round w3-2017-shaded-spruce w3-hover-teal w3-center" id="dppath" type="file"></p>
+	  <p><button onClick="dp_change()" class="w3-ripple w3-button w3-round w3-2017-shaded-spruce w3-hover-teal w3-center">Change</button>
+
+      </div>
+
+      <footer class="w3-container w3-teal">
+        <p>Please select a valid image file</p>
+      </footer>
+    </div></div>
+	  </div><br>
+	  </div>
+    </div>
+	<div id="settings_delete" class="w3-container w3-card-2 w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-trash fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>DataBase</h2>
+        <div class="w3-container">
+          <h5><b>Delete</b></h5>
+          <div class="w3-container">
+       
+          <label class="w3-opacity"><b>Deleting the Database trashes out your Login Credentials and Clears current Session.</b></label><br>
+          <button class="w3-button w3-left w3-red w3-section w3-padding" onClick="reset()">Delete</button>
+        </div>
+       
+      </div>
+    </div>
+	<div id="settings_dash" class="w3-container w3-card-2 w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-dashboard fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Dash Board</h2>
+        <div class="w3-container">
+          <h5><b>Coming Soon.</b></h5>
+          <div class="w3-container">
+       
+          <label class="w3-opacity w3-margin-bottom"><b>The settings for the Dash Board and Dash Board page features are yet to come.</b></label><br><br>
+        </div>
+       
+      </div>
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+  <!-- End Page Container -->
+</div>
+
+<div id="dp_c" class="w3-modal">
+<header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('dp_c').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>Profile Photo</h2>
+      </header>
+      <div class="w3-container w3-white">
+     <p><label>Select a new photo</label> <input style="width:35%;" accept="image/*" class="w3-input w3-button w3-round w3-2017-shaded-spruce w3-hover-teal w3-center" id="dppath" type="file"></p>
+	  <p><button onClick="dp_change()" class="w3-ripple w3-button w3-round w3-2017-shaded-spruce w3-hover-teal w3-center">Change</button>
+
+      </div>
+
+      <footer class="w3-container w3-teal">
+        <p>Please select a valid Image File.</p>
+      </footer>
+    </div>
+<footer class="w3-hide w3-container w3-center w3-2017-shaded-spruce w3-card-4 w3-margin-top">
+
+<p>Find me on social media.</p>
+  <i class="fa fa-facebook-official w3-hover-opacity"></i>
+  <i class="fa fa-instagram w3-hover-opacity"></i>
+  <i class="fa fa-snapchat w3-hover-opacity"></i>
+  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+  <i class="fa fa-twitter w3-hover-opacity"></i>
+  <i class="fa fa-linkedin w3-hover-opacity"></i>
+  <p>Powered by <a href="#" taarget="_blank">Local Host</a></p><p id="user"></p><button onClick="logout()" class="w3-button w3-margin-bottom w3-round w3-2017-shaded-spruce w3-hover-pink w3-center"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Logout</button>
+</footer>
+	</div>
+</div>
+<!-- settings ends --->
+</body>
+</html>

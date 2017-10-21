@@ -1,0 +1,15 @@
+{
+  "short_name": "Local Host App",
+  "name": "Sreejith N",
+  "icons": [
+    {
+      "src": "icons/icon.png",
+      "sizes": "96x96",
+      "type": "image/png"
+}
+  ],
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "portrait"
+  "theme_color": "#008080"
+}

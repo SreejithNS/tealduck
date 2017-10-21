@@ -1,0 +1,44 @@
+body {
+background-color:#1d1d1d;
+}
+.page {
+width:100%;
+height:100%;
+}
+.w3-2017-shaded-spruce
+{color:#fff;background-color:#005960}
+
+#dberr {
+display:none;
+}
+#loginerr {
+display:none;
+}
+#save {
+display:none;
+}
+#save1 {
+display:none;
+}
+.popup {
+width:40%;
+}
+
+.hover:hover {
+transform:5s;
+}
+
+.navres {
+margin-top:60px;
+}
+.ui-page { -webkit-backface-visibility: hidden; }
+
+#index {
+display:none;
+}
+#dash {
+display:none;
+}#settings {
+display:none;
+}
+
