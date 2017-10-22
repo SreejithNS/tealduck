@@ -17,6 +17,8 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <platform name="android">
+ <preference name="Fullscreen" value="true" />
+  <icon src="res/icon.png" width="180" height="180" />
         <allow-intent href="market:*" />
     </platform>
 	<icon src="res/icon.png" />
